@@ -11,7 +11,7 @@ The plugin is created for adding action (dispatch, complete, error) status to UI
 
 ## Reasons to Use This Plugin
 
- Most of the time we are importing so many things to show loader on Ui element like the common one is creating a boolean state in component 
+ Most of the time we are importing so many things to show loader, disable the Ui element and  like the common one is creating a boolean state in component 
 to check for action status, due to this plugin, we can easily handle by using [angular custom directive](https://angular.io/guide/attribute-directives), we can do the following things:
 
 - watch action.
@@ -22,6 +22,9 @@ to check for action status, due to this plugin, we can easily handle by using [a
  * on action dispatch we adding `active` class.
  * on action success we adding `success` class.
  * on action throw error we adding `error` class.
+
+### Disable the UI element.
+when action is dispatch the UI element is disabled so plugin prevents a double click on the UI element and enables once action status becomes success or error..
 
  ***Node***: you need to adding CSS against these classes.
 
