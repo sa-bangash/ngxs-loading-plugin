@@ -1,6 +1,11 @@
 # NGXS loading Plugin
 
 
+<p align="center">
+  <img src="https://img.shields.io/github/license/ng-turkey/ngxs-reset-plugin.svg" />
+  <a href="https://twitter.com/__bangash"><img src="https://img.shields.io/twitter/follow/__bangash.svg?label=Follow"/></a>
+</p>
+
 The plugin is created for adding action (dispatch, complete, error) status to UI elements such as the submit button [NGXS](https://www.npmjs.com/package/@ngxs/store).
 
 
