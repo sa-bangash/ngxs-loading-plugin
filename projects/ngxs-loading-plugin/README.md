@@ -1,24 +1,93 @@
-# NgxsLoadingPlugin
+# NGXS loading Plugin
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
 
-## Code scaffolding
+The plugin is created for adding action (dispatch, complete, error) status to UI elements such as the submit button [NGXS](https://www.npmjs.com/package/@ngxs/store).
 
-Run `ng generate component component-name --project ngxs-loading-plugin` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngxs-loading-plugin`.
-> Note: Don't forget to add `--project ngxs-loading-plugin` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
+## Reasons to Use This Plugin
 
-Run `ng build ngxs-loading-plugin` to build the project. The build artifacts will be stored in the `dist/` directory.
+ Most of the time we are importing so many things to show loader on Ui element like the common one is creating a boolean state in component 
+to check for action status, due to this plugin, we can easily handle by using [angular custom directive](https://angular.io/guide/attribute-directives), we can do the following things:
 
-## Publishing
+- watch action.
+- watch state(like creating a boolean flag in-state).
+- can directly dispatch and watch the action.
 
-After building your library with `ng build ngxs-loading-plugin`, go to the dist folder `cd dist/ngxs-loading-plugin` and run `npm publish`.
+>We adding `CSS` class to the UI element to define the status of the action.
+ * on action dispatch we adding `active` class.
+ * on action success we adding `success` class.
+ * on action throw error we adding `error` class.
 
-## Running unit tests
+ ***Node***: you need to adding CSS against these classes.
 
-Run `ng test ngxs-loading-plugin` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Further help
+Run the following code in your terminal:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+yarn add ngxs-loading-plugin
+```
+
+or if you are using npm:
+
+```
+npm install ngxs-loading-plugin
+```
+
+## Usage
+
+### Setup Before Initial Use
+
+Import `NgxsLoadingPluginModule` into your root module like:
+
+```TS
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoadingPluginModule } from 'ngxs-reset-plugin';
+
+@NgModule({
+  imports: [
+    NgxsModule.forRoot([ /* Your states here */ ]),
+    NgxsLoadingPluginModule.forRoot()
+  ]
+})
+export class AppModule {}
+```
+
+### Watch state.
+
+using `ngxsStateWatchLoading` directive and pass the path as string.
+
+```html
+<button type="button" ngxsStateWatchLoading="loading.loadingBooks" (click)="fetchingBooks()">Submit</button>
+```
+
+> **Important Note**: here we just adding two CSS class `active` ( when the state becomes true) and `success` (when the state becomes false) because of boolean nature. we will try to move it to three states like 
+* 0  => `active`.
+* 1  => `success`.
+* -1 => `error`.
+
+
+### Watch the action
+
+just passing the instance of action to `[ngxsActionWatchLoading]` directive.
+```html
+<button type="button" [ngxsActionWatchLoading]="fechingBookAction" (click)="fetchingBooks()">Submit</button>
+```
+or passing action type as a string `ngxsActionWatchLoading="[loading] fetching Books"`.
+```html
+<button type="button" ngxsActionWatchLoading="[loading] fetching Books" (click)="fetchingBooks()">Submit</button>
+```
+
+### Watch and dispatch the action.
+
+just passing action instanse `[ngxsDispatchLoading]="fetchingTeacherAction"`.
+```html
+<button type="button [ngxsDispatchLoading]="fetchingTeacherAction">Submit</button>
+
+```
+or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
+
+```html
+<button type="button" ngxsStateWatchLoading="loading.loadingTeacher" (click)="fetchingTeachers()">Submit</button>
+```
+
