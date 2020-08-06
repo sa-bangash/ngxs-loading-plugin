@@ -2,7 +2,6 @@
 
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/ng-turkey/ngxs-reset-plugin.svg" />
   <a href="https://twitter.com/__bangash"><img src="https://img.shields.io/twitter/follow/__bangash.svg?label=Follow"/></a>
 </p>
 
@@ -50,7 +49,7 @@ Import `NgxsLoadingPluginModule` into your root module like:
 
 ```TS
 import { NgxsModule } from '@ngxs/store';
-import { NgxsLoadingPluginModule } from 'ngxs-reset-plugin';
+import { NgxsLoadingPluginModule } from 'ngxs-loading-plugin';
 
 @NgModule({
   imports: [
