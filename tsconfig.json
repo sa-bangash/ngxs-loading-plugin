@@ -18,14 +18,14 @@
       "es2018",
       "dom"
     ],
-    "paths": {
-      "ngxs-loading-plugin": [
-        "dist/ngxs-loading-plugin"
-      ],
-      "ngxs-loading-plugin/*": [
-        "dist/ngxs-loading-plugin/*"
-      ]
-    }
+    // "paths": {
+    //   "ngxs-loading-plugin": [
+    //     "dist/ngxs-loading-plugin"
+    //   ],
+    //   "ngxs-loading-plugin/*": [
+    //     "dist/ngxs-loading-plugin/*"
+    //   ]
+    // }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
