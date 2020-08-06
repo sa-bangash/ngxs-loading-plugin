@@ -1,7 +1,8 @@
-import { ElementRef, OnDestroy } from '@angular/core';
+import { ElementRef, OnDestroy, Input } from '@angular/core';
 import { ofActionErrored, ofActionSuccessful, ofActionDispatched, Actions } from '@ngxs/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 const CSS_CLASS_NAMES = {
   active: 'active',
   success: 'success',
@@ -10,7 +11,10 @@ const CSS_CLASS_NAMES = {
 export class AbstractLoading implements OnDestroy {
   action: string | { type: string };
   subscription = new Subject();
-  constructor(protected elem: ElementRef, protected action$: Actions) {}
+  // tslint:disable-next-line: no-input-rename
+  @Input('ngxsOnSuccessUrl')
+  successUrl: string;
+  constructor(protected elem: ElementRef, protected action$: Actions, protected router: Router) { }
 
   get nativeElement(): HTMLInputElement {
     return this.elem.nativeElement;
@@ -72,6 +76,7 @@ export class AbstractLoading implements OnDestroy {
       .subscribe(() => {
         this.onSuccess();
         this.onEnable();
+        this.navigateByUrl();
       });
     this.action$
       .pipe(
@@ -91,7 +96,11 @@ export class AbstractLoading implements OnDestroy {
     }
     return this.action;
   }
-
+  navigateByUrl() {
+    if (typeof this.successUrl === 'string') {
+      this.router.navigateByUrl(this.successUrl);
+    }
+  }
   ngOnDestroy(): void {
     this.subscription.next();
     this.subscription.complete();

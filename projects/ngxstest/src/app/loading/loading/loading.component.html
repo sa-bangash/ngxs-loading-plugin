@@ -1,4 +1,7 @@
-<h1 style="color: green;">Successful Actions</h1>
+<div style="display: flex; justify-content: center; align-items: center;">
+  <h1>Home</h1>
+</div>
+<h3 style="color: green;">Successful Actions</h3>
 <div class="container">
   <div class="content">
     <p> 1) By passing Action as String</p>
@@ -9,7 +12,7 @@
   <div class="content">
     <p> 2) By passing Action Object</p>
     <div class="btn-container">
-      <button type="button" [ngxsDispatchLoading]="fechingBookAction">Submit</button>
+      <button type="button" [ngxsDispatchLoading]="fechingBookAction" ngxsOnSuccessUrl="student">Submit</button>
     </div>
   </div>
   <div class="content">
@@ -31,7 +34,7 @@
     </div>
   </div>
 </div>
-<h1 style="color: red;">Error Thrown Actions</h1>
+<h3 style="color: red;">Error Thrown Actions</h3>
 <div class="container">
   <div class="content">
     <p> 1) By passing Action as String</p>
@@ -42,7 +45,7 @@
   <div class="content">
     <p> 2) By passing Action Object</p>
     <div class="btn-container">
-      <button type="button" [ngxsDispatchLoading]="fetchingTeacherAction">Submit</button>
+      <button type="button" [ngxsDispatchLoading]="fetchingTeacherAction" ngxsOnSuccessUrl="home">Submit</button>
     </div>
   </div>
   <div class="content">

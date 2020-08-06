@@ -2,6 +2,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { Store, getValue, Actions } from '@ngxs/store';
 import { AbstractLoading } from './abstract-loading';
 import { skip, takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Directive({
   selector: '[ngxsStateWatchLoading]'
@@ -9,8 +10,8 @@ import { skip, takeUntil } from 'rxjs/operators';
 export class NgxsStateWatchLoadingDirective extends AbstractLoading implements OnInit {
   @Input('ngxsStateWatchLoading')
   path: string;
-  constructor(private store: Store, protected elem: ElementRef, protected action$: Actions) {
-    super(elem, action$);
+  constructor(private store: Store, protected elem: ElementRef, protected action$: Actions, protected router: Router) {
+    super(elem, action$, router);
   }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class NgxsStateWatchLoadingDirective extends AbstractLoading implements O
           if (resp) {
             this.onActive();
             this.onDisabled();
+            this.navigateByUrl();
           } else {
             this.onRemoveActive();
             this.onEnable();
