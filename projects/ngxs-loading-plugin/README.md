@@ -61,6 +61,41 @@ import { NgxsLoadingPluginModule } from 'ngxs-reset-plugin';
 export class AppModule {}
 ```
 
+loading.actions.ts
+```TS
+export class FetchingBooksAction {
+  static readonly type = '[loading] fetching Books';
+}
+
+export class FetchingTeachersAction {
+  static readonly type = '[loading] fetcing teachers';
+}
+```
+
+loading.component.ts
+```TS
+@Component({
+  selector: 'loading',
+  templateUrl: './loading.component.html',
+  styleUrls: ['./loading.component.css']
+})
+export class LoadingComponent implements OnInit {
+  fechingBookAction = new FetchingBooksAction();
+  fetchingTeacherAction = new FetchingTeachersAction();
+  constructor(private store: Store) {}
+
+  ngOnInit() {}
+
+  fetchingBooks() {
+    this.store.dispatch(this.fechingBookAction);
+  }
+
+  fetchingTeachers() {
+    this.store.dispatch(this.fetchingTeacherAction);
+  }
+}
+```
+
 ### Watch state.
 
 using `ngxsStateWatchLoading` directive and pass the path as string.
