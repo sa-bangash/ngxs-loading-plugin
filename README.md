@@ -136,7 +136,7 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 ### Navigate by url once action is success
 
 > Most of the time when action succeeded we need to redirect to
-  another page, for this purpose you can use  `ngxsOnSuccessUrl` by passing router url.
+  another page, for this purpose you can use  `ngxsOnSuccessUrl` by passing url.
 
 ```html
 <button type="button" [ngxsDispatchLoading]="fechingBookAction" ngxsOnSuccessUrl="home">Submit</button>
