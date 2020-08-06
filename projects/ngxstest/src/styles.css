@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+.container{
+    background-color: #3c3762;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    font-size: 17px;
+    padding: 10px;
+    height: 600px;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250;
+    flex-direction: column;
+}
+button{
+    display: inline-block;
+    width: 220px;
+    height: 60px;
+    border:2px solid #ffffff;
+    border-radius: 50px;
+    border-color: #ffffff;
+    outline: none;
+    color:#fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    line-height: 56px;
+    background-color: transparent;
+    transition: all ease 0.5s;
+   }
+
+   .error{
+       border-color: red;
+   }
+   .success{
+       border-color: green;
+   }
+   .active {
+       width: 60px;
+       height: 60px;
+       border-left-color: transparent;
+       border-radius: 50%;
+       font-size: 0px;
+       animation: rotate 1.5s ease 0.5s infinite ;
+   }
+   
+   @keyframes rotate {
+       0%{
+           transform: rotate(360deg);
+       }
+   }

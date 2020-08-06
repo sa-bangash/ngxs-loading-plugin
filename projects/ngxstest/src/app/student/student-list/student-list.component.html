@@ -1,0 +1,68 @@
+<h1 style="color: green;">Successful Actions</h1>
+<div class="container">
+  <div class="content">
+    <p> 1) By passing Action as String</p>
+    <div class="btn-container">
+      <button type="button" ngxsDispatchLoading="[loading] fetching Books">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 2) By passing Action Object</p>
+    <div class="btn-container">
+      <button type="button" [ngxsDispatchLoading]="fechingBookAction">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 3) By passing state path</p>
+    <div class="btn-container">
+      <button type="button" ngxsStateWatchLoading="loading.loadingBooks" (click)="fetchingBooks()">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 4) Watch action by string</p>
+    <div class="btn-container">
+      <button type="button" ngxsActionWatchLoading="[loading] fetching Books" (click)="fetchingBooks()">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 5) Watch action by Action object</p>
+    <div class="btn-container">
+      <button type="button" [ngxsActionWatchLoading]="fechingBookAction" (click)="fetchingBooks()">Submit</button>
+    </div>
+  </div>
+</div>
+<h1 style="color: red;">Error Thrown Actions</h1>
+<div class="container">
+  <div class="content">
+    <p> 1) By passing Action as String</p>
+    <div class="btn-container">
+      <button type="button" ngxsDispatchLoading="[loading] fetcing teachers">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 2) By passing Action Object</p>
+    <div class="btn-container">
+      <button type="button" [ngxsDispatchLoading]="fetchingTeacherAction">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 3) By passing state path</p>
+    <div class="btn-container">
+      <button type="button" ngxsStateWatchLoading="loading.loadingTeacher" (click)="fetchingTeachers()">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 4) Watch action by string</p>
+    <div class="btn-container">
+      <button type="button" ngxsActionWatchLoading="[loading] fetcing teachers"
+        (click)="fetchingTeachers()">Submit</button>
+    </div>
+  </div>
+  <div class="content">
+    <p> 5) Watch action by Action object</p>
+    <div class="btn-container">
+      <button type="button" [ngxsActionWatchLoading]="fetchingTeacherAction"
+        (click)="fetchingTeachers()">Submit</button>
+    </div>
+  </div>
+</div>

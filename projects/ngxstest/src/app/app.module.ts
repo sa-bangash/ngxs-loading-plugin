@@ -6,12 +6,16 @@ import { NgxsModule } from '@ngxs/store';
 import { LoadingState } from './loading/loading.state';
 import { LoadingComponent } from './loading/loading/loading.component';
 import { NgxsLoadingPluginModule } from 'ngxs-loading-plugin';
+import { RouterModule } from '@angular/router';
+import { router } from './app.module.route';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent
   ],
   imports: [
+    RouterModule.forRoot(router),
     BrowserModule,
     NgxsModule.forRoot([LoadingState]),
     NgxsLoadingPluginModule.forRoot(),
