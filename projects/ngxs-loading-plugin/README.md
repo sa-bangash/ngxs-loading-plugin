@@ -133,6 +133,6 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 ```html
 <button type="button" ngxsStateWatchLoading="loading.loadingTeacher" (click)="fetchingTeachers()">Submit</button>
 ```
-![button loading](../../asset/button-actions.gif)
+![button loading](../../asset/actions.gif)
 
 
