@@ -164,7 +164,7 @@ If you want to do some thing, when action is dispatch, successed and on Error. f
 
 ![button loading](./asset/actions.gif)
 
-### License and copyright
+### License and copy right
 &copy; Shahid Ahmad
 
 License under the [MIT License](LICENSE).
