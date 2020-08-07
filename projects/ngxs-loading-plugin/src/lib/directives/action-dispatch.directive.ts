@@ -1,7 +1,8 @@
-import { Directive, ElementRef, HostListener, Input, OnInit, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Store, Actions } from '@ngxs/store';
 import { AbstractLoading } from './abstract-loading';
 import { Router } from '@angular/router';
+import { IConfig } from './interface';
 
 @Directive({
   selector: '[ngxsDispatchLoading]'
@@ -17,9 +18,13 @@ export class NgxsDispatchDirective extends AbstractLoading implements OnInit, On
     this.store.dispatch(this.getActionObject());
   }
 
-  constructor(private store: Store, protected elem: ElementRef, protected action$: Actions, protected router: Router) {
-    super(elem, action$, router);
-  }
+  constructor(
+    private store: Store,
+    protected elem: ElementRef,
+    protected action$: Actions,
+    protected router: Router,
+    @Inject('config') protected configService: IConfig
+  ) { super(elem, action$, router, configService); }
 
   ngOnInit(): void {
     this.watchAction();

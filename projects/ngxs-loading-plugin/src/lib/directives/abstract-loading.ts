@@ -3,12 +3,10 @@ import { ofActionErrored, ofActionSuccessful, ofActionDispatched, Actions } from
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
-const CSS_CLASS_NAMES = {
-  active: 'active',
-  success: 'success',
-  error: 'error'
-};
-export class AbstractLoading implements OnDestroy {
+import { IConfig, ICssClassName } from './interface';
+import { DEFAULT_CONFIG } from './constant';
+
+export abstract class AbstractLoading implements OnDestroy {
   action: string | { type: string };
   subscription = new Subject();
   // tslint:disable-next-line: no-input-rename
@@ -30,10 +28,22 @@ export class AbstractLoading implements OnDestroy {
   // tslint:disable-next-line: no-output-rename
   onDispatch = new EventEmitter();
 
-  constructor(protected elem: ElementRef, protected action$: Actions, protected router: Router) { }
+  constructor(
+    protected elem: ElementRef,
+    protected action$: Actions,
+    protected router: Router,
+    protected config: IConfig
+  ) { }
 
   get nativeElement(): HTMLInputElement {
     return this.elem.nativeElement;
+  }
+
+  get cssClassName(): ICssClassName {
+    if (this.config && this.config.cssClassName) {
+      return this.config.cssClassName;
+    }
+    return DEFAULT_CONFIG.cssClassName;
   }
 
   onEnable() {
@@ -45,33 +55,33 @@ export class AbstractLoading implements OnDestroy {
   }
 
   onActive() {
-    const { active, success, error } = CSS_CLASS_NAMES;
+    const { active, success, error } = this.cssClassName;
     this.nativeElement.classList.add(active);
     this.nativeElement.classList.remove(success, error);
   }
 
   onSuccess() {
-    const { active, success, error } = CSS_CLASS_NAMES;
+    const { active, success, error } = this.cssClassName;
     this.nativeElement.classList.add(success);
     this.nativeElement.classList.remove(active, error);
   }
 
   onError() {
-    const { active, success, error } = CSS_CLASS_NAMES;
+    const { active, success, error } = this.cssClassName;
     this.nativeElement.classList.add(error);
     this.nativeElement.classList.remove(active, success);
   }
 
   onRemoveActive() {
-    this.nativeElement.classList.remove(CSS_CLASS_NAMES.active);
+    this.nativeElement.classList.remove(this.cssClassName.active);
   }
 
   onRemoveSuccess() {
-    this.nativeElement.classList.remove(CSS_CLASS_NAMES.success);
+    this.nativeElement.classList.remove(this.cssClassName.success);
   }
 
   onRemoveError() {
-    this.nativeElement.classList.remove(CSS_CLASS_NAMES.error);
+    this.nativeElement.classList.remove(this.cssClassName.error);
   }
 
   watchAction() {

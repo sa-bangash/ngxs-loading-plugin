@@ -22,7 +22,7 @@ to check for action status, due to this plugin, we can easily handle by using [a
  * on action success we adding `success` class.
  * on action throw error we adding `error` class.
 
-### Disable the UI element.
+### Disable the UI element
 when action is dispatch the UI element is disabled so plugin prevents a double click on the UI element and enables once action status becomes success or error..
 
  ***Node***: you need to adding CSS against these classes.
@@ -95,7 +95,7 @@ export class LoadingComponent implements OnInit {
 }
 ```
 
-### Watch state.
+### Watch state
 
 using `ngxsStateWatchLoading` directive and pass the path as string.
 
@@ -103,7 +103,7 @@ using `ngxsStateWatchLoading` directive and pass the path as string.
 <button type="button" ngxsStateWatchLoading="loading.loadingBooks" (click)="fetchingBooks()">Submit</button>
 ```
 
-> **Important Note**: here we just adding two CSS class `active` ( when the state becomes true) and `success` (when the state becomes false) because of boolean nature. we will try to move it to three states like 
+> **Important Note**: here we just adding two CSS class `active` ( when the state becomes true) and `success` (when the state becomes false) because of boolean nature. we will try to move it to three states like.
 * 0  => `active`.
 * 1  => `success`.
 * -1 => `error`.
@@ -135,7 +135,7 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 
 ### Navigate by url once action is success
 
-> Most of the time when action succeeded we need to redirect to
+Most of the time when action succeeded we need to redirect to
   another page, for this purpose you can use  `ngxsOnSuccessUrl` by passing url.
 
 ```html
