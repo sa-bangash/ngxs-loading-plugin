@@ -141,5 +141,30 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 ```html
 <button type="button" [ngxsDispatchLoading]="fechingBookAction" ngxsOnSuccessUrl="home">Submit</button>
 ```
+### Output on Success, Error and Dispatch actions.
+If you want to do some thing, when action is dispatch, successed and on Error. following outputs from directive.
+* ngxsOnDispatch
+* ngxsOnSuccess
+* ngxsOnError
+
+#### ngxsOnDispatch
+```HTML
+<button [ngxsDispatchLoading]="fetchingTeacherAction" (ngxsOnDispatch)="onDispatch()">Submit</button>
+```
+
+#### ngxsOnSuccess
+```HTML
+<button [ngxsDispatchLoading]="fetchingTeacherAction" (ngxsOnSuccess)="onSuccess()">Submit</button>
+```
+
+#### ngxsOnError
+```HTML
+<button [ngxsDispatchLoading]="fetchingTeacherAction" (ngxsOnError)="onError()">Submit</button>
+```
 
 ![button loading](../../asset/actions.gif)
+
+### License and copyright
+&copy; Shahid Ahmad
+
+License under the [MIT License](LICENSE).

@@ -1,4 +1,4 @@
-import { ElementRef, OnDestroy, Input } from '@angular/core';
+import { ElementRef, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { ofActionErrored, ofActionSuccessful, ofActionDispatched, Actions } from '@ngxs/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -12,8 +12,24 @@ export class AbstractLoading implements OnDestroy {
   action: string | { type: string };
   subscription = new Subject();
   // tslint:disable-next-line: no-input-rename
-  @Input('ngxsOnSuccessUrl')
+  @Input('ngxsSuccessUrl')
   successUrl: string;
+
+  // tslint:disable-next-line: no-output-on-prefix
+  @Output('ngxsOnSuccess')
+  // tslint:disable-next-line: no-output-rename
+  onSuccessAction = new EventEmitter();
+
+  // tslint:disable-next-line: no-output-on-prefix
+  @Output('ngxsOnError')
+  // tslint:disable-next-line: no-output-rename
+  onErrorAction = new EventEmitter();
+
+  // tslint:disable-next-line: no-output-on-prefix
+  @Output('ngxsOnDispatch')
+  // tslint:disable-next-line: no-output-rename
+  onDispatch = new EventEmitter();
+
   constructor(protected elem: ElementRef, protected action$: Actions, protected router: Router) { }
 
   get nativeElement(): HTMLInputElement {
@@ -67,6 +83,7 @@ export class AbstractLoading implements OnDestroy {
       .subscribe(() => {
         this.onActive();
         this.onDisabled();
+        this.onDispatch.emit();
       });
     this.action$
       .pipe(
@@ -77,6 +94,7 @@ export class AbstractLoading implements OnDestroy {
         this.onSuccess();
         this.onEnable();
         this.navigateByUrl();
+        this.onSuccessAction.emit();
       });
     this.action$
       .pipe(
@@ -86,6 +104,7 @@ export class AbstractLoading implements OnDestroy {
       .subscribe(() => {
         this.onError();
         this.onEnable();
+        this.onErrorAction.emit();
       });
   }
   getActionObject(): { type: string } {

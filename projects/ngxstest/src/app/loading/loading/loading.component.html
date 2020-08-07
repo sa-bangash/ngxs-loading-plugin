@@ -12,7 +12,8 @@
   <div class="content">
     <p> 2) By passing Action Object</p>
     <div class="btn-container">
-      <button type="button" [ngxsDispatchLoading]="fechingBookAction" ngxsOnSuccessUrl="student">Submit</button>
+      <button type="button" [ngxsDispatchLoading]="fechingBookAction" ngxsOnSuccessUrl="student"
+        (ngxsOnSuccess)="onSuccess($event)" (ngxsOnDispatch)="onDispatch($event)">Submit</button>
     </div>
   </div>
   <div class="content">
@@ -45,7 +46,7 @@
   <div class="content">
     <p> 2) By passing Action Object</p>
     <div class="btn-container">
-      <button type="button" [ngxsDispatchLoading]="fetchingTeacherAction" ngxsOnSuccessUrl="home">Submit</button>
+      <button type="button" [ngxsDispatchLoading]="fetchingTeacherAction" ngxsOnSuccessUrl="home" (ngxsOnError)="onError($event)">Submit</button>
     </div>
   </div>
   <div class="content">

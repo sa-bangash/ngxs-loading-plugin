@@ -27,6 +27,7 @@ export class NgxsStateWatchLoadingDirective extends AbstractLoading implements O
             this.onActive();
             this.onDisabled();
             this.navigateByUrl();
+            this.onSuccessAction.emit();
           } else {
             this.onRemoveActive();
             this.onEnable();

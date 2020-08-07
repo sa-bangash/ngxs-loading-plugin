@@ -55,9 +55,15 @@ button{
        font-size: 0px;
        animation: rotate 1.5s ease 0.5s infinite ;
    }
+   .top-nav{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 30px;
+   }
    
    @keyframes rotate {
        0%{
            transform: rotate(360deg);
        }
    }
+
