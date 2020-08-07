@@ -61,13 +61,13 @@ export class AppModule {}
 ```
 >  we can pass config object to `forRoot` to change css class name.
 ```TS
-    NgxsLoadingPluginModule.forRoot({
-      cssClassName: {
-        active: 'dispatch',
-        success: 'done',
-        error: 'error'
-      }
-    })
+  NgxsLoadingPluginModule.forRoot({
+    cssClassName: {
+      active: 'dispatch',
+      success: 'done',
+      error: 'error'
+    }
+  })
 ```
 loading.actions.ts
 ```TS
