@@ -143,3 +143,8 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 ```
 
 ![button loading](./asset/actions.gif)
+
+### License and copyright
+&copy; Shahid Ahmad
+
+License under the [MIT License](LICENSE).
