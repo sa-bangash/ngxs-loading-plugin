@@ -141,20 +141,16 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 ```html
 <button type="button" ngxsStateWatchLoading="loading.loadingTeacher" (click)="fetchingTeachers()">Submit</button>
 ```
-### call function.
-in `call function` we passing a function to the directive. the function should return observable. you can see the following example.
+### Call a function.
+In `call a function` we passing a function to the directive. the function should return observable. you can see the following example.
 
 loading.component.ts
 ```TS
-export class LoadingComponent implements OnInit {
-  fechingBookAction = new FetchingBooksAction(); 
-  fetchingTeacherAction = new FetchingTeachersAction();
+export class LoadingComponent {
   constructor(private store: Store) {}
 
-  ngOnInit() {}
-
     fetchingBooks(): Observable<any> {
-    return this.store.dispatch(this.fechingBookAction).pipe(tap((resp) => {
+    return this.store.dispatch(new FetchingBooksAction()).pipe(tap((resp) => {
       /* here your code on success */
     }), catchError((error) => {
       /* here your code on error */
@@ -163,7 +159,7 @@ export class LoadingComponent implements OnInit {
   }
 
   fetchingTeachers(): Observable<any> {
-    return this.store.dispatch(this.fetchingTeacherAction).pipe(tap((resp) => {
+    return this.store.dispatch(new FetchingTeachersAction()).pipe(tap((resp) => {
       /* here your code on success */
     }), catchError((error) => {
       /* here your code on error */
