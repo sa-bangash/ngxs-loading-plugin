@@ -1,18 +1,18 @@
 <div style="display: flex; justify-content: center; align-items: center;">
-  <h1>Student</h1>
+  <h1>Home</h1>
 </div>
 <h3 style="color: green;">Successful Actions</h3>
 <div class="container">
   <div class="content">
       <p> 1) By passing Action as String</p>
       <div class="btn-container">
-          <button type="button" ngxsDispatchLoading="[loading] fetching Books" ngxsOnSuccessUrl="home">Submit</button>
+          <button type="button" ngxsDispatchLoading="[loading] fetching Books" >Submit</button>
       </div>
   </div>
   <div class="content">
       <p> 2) By passing Action Object</p>
       <div class="btn-container">
-          <button type="button" [ngxsDispatchLoading]="fechingBookAction" ngxsOnSuccessUrl="home">Submit</button>
+          <button type="button" [ngxsDispatchLoading]="fechingBookAction" >Submit</button>
       </div>
   </div>
   <div class="content">
@@ -37,7 +37,7 @@
   <div class="content">
       <p> 6) call a function</p>
       <div class="btn-container">
-          <button type="button" [ngxsFunctionLoading]="fetchingBooks.bind(this)">Submit</button>
+          <button type="button" [ngxsFunctionLoading]="fetchingBooks.bind(this)" ngxsSuccessUrl="student">Submit</button>
       </div>
   </div>
 </div>
@@ -52,7 +52,7 @@
   <div class="content">
       <p> 2) By passing Action Object</p>
       <div class="btn-container">
-          <button type="button" [ngxsDispatchLoading]="fetchingTeacherAction" ngxsOnSuccessUrl="home">Submit</button>
+          <button type="button" [ngxsDispatchLoading]="fetchingTeacherAction" >Submit</button>
       </div>
   </div>
   <div class="content">

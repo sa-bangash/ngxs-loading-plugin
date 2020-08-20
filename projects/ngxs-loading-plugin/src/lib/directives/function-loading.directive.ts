@@ -26,6 +26,7 @@ export class FunctionLoadingDirective extends AbstractLoading {
         )
         .subscribe(() => {
           this.onSuccess();
+          this.navigateByUrl();
         }, (error) => {
           this.onError();
         }
