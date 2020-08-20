@@ -149,7 +149,7 @@ loading.component.ts
 export class LoadingComponent {
   constructor(private store: Store) {}
 
-    fetchingBooks(): Observable<any> {
+  fetchingBooks(): Observable<any> {
     return this.store.dispatch(new FetchingBooksAction()).pipe(tap((resp) => {
       /* here your code on success */
     }), catchError((error) => {
