@@ -25,7 +25,7 @@ to check for action status, due to this plugin, we can easily handle by using [a
 ### Disable the UI element.
 when action is dispatch the UI element is disabled so plugin prevents a double click on the UI element and enables once action status becomes success or error..
 
- ***Node***: you need to adding CSS against these classes.
+ ***Note***: you need to adding CSS against these classes.
 
 ## Installation
 
@@ -88,7 +88,7 @@ loading.component.ts
   styleUrls: ['./loading.component.css']
 })
 export class LoadingComponent implements OnInit {
-  fechingBookAction = new FetchingBooksAction();
+  fechingBookAction = new FetchingBooksAction(); 
   fetchingTeacherAction = new FetchingTeachersAction();
   constructor(private store: Store) {}
 
@@ -120,7 +120,7 @@ using `ngxsStateWatchLoading` directive and pass the path as string.
 
 ### Watch the action
 
-just passing the instance of action to `[ngxsActionWatchLoading]` directive.
+Passing the instance or class reference of action to `[ngxsActionWatchLoading]` directive.
 ```html
 <button type="button" [ngxsActionWatchLoading]="fechingBookAction" (click)="fetchingBooks()">Submit</button>
 ```
@@ -131,7 +131,7 @@ or passing action type as a string `ngxsActionWatchLoading="[loading] fetching B
 
 ### Watch and dispatch the action.
 
-just passing action instanse `[ngxsDispatchLoading]="fetchingTeacherAction"`.
+Passing instance of action `[ngxsDispatchLoading]="fetchingTeacherAction"`.
 ```html
 <button type="button [ngxsDispatchLoading]="fetchingTeacherAction">Submit</button>
 
@@ -141,6 +141,43 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 ```html
 <button type="button" ngxsStateWatchLoading="loading.loadingTeacher" (click)="fetchingTeachers()">Submit</button>
 ```
+### call function.
+in `call function` we passing a function to the directive. the function should return observable. you can see the following example.
+
+loading.component.ts
+```TS
+export class LoadingComponent implements OnInit {
+  fechingBookAction = new FetchingBooksAction(); 
+  fetchingTeacherAction = new FetchingTeachersAction();
+  constructor(private store: Store) {}
+
+  ngOnInit() {}
+
+    fetchingBooks(): Observable<any> {
+    return this.store.dispatch(this.fechingBookAction).pipe(tap((resp) => {
+      /* here your code on success */
+    }), catchError((error) => {
+      /* here your code on error */
+      return error;
+    }));
+  }
+
+  fetchingTeachers(): Observable<any> {
+    return this.store.dispatch(this.fetchingTeacherAction).pipe(tap((resp) => {
+      /* here your code on success */
+    }), catchError((error) => {
+      /* here your code on error */
+      throw error;
+    }));
+  }
+}
+```
+ here `fetchingBooks` and `fetchingTeachers` returning obserable and than we pass these function to directive in the current class context.
+
+ ```html
+<button type="button" [ngxsFunctionLoading]="fetchingBooks.bind(this)">Submit</button>
+```
+here 'bind' reserve the context of the current class. and send copy of function to the directive.
 
 ### Navigate by url once action is success
 

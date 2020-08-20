@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchingBooksAction, FetchingTeachersAction } from '../loading.actions';
 import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-loading',
@@ -14,14 +16,23 @@ export class LoadingComponent implements OnInit {
 
   ngOnInit() { }
 
-  fetchingBooks() {
-    this.store.dispatch(this.fechingBookAction);
+  fetchingBooks(): Observable<any> {
+    return this.store.dispatch(this.fechingBookAction).pipe(tap((resp) => {
+      /* here your code on success */
+    }), catchError((error) => {
+      /* here your code on error */
+      return error;
+    }));
   }
 
-  fetchingTeachers() {
-    this.store.dispatch(this.fetchingTeacherAction);
+  fetchingTeachers(): Observable<any> {
+    return this.store.dispatch(this.fetchingTeacherAction).pipe(tap((resp) => {
+      /* here your code on success */
+    }), catchError((error) => {
+      /* here your code on error */
+      throw error;
+    }));
   }
-
   onSuccess() {
     console.log('onSuccess in component');
   }

@@ -34,6 +34,12 @@
             <button type="button" [ngxsActionWatchLoading]="fechingBookAction" (click)="fetchingBooks()">Submit</button>
         </div>
     </div>
+    <div class="content">
+        <p> 6) call a function</p>
+        <div class="btn-container">
+            <button type="button" [ngxsFunctionLoading]="fetchingBooks.bind(this)">Submit</button>
+        </div>
+    </div>
 </div>
 <h3 style="color: red;">Error Thrown Actions</h3>
 <div class="container">
@@ -68,6 +74,12 @@
         <div class="btn-container">
             <button type="button" [ngxsActionWatchLoading]="fetchingTeacherAction"
                 (click)="fetchingTeachers()">Submit</button>
+        </div>
+    </div>
+    <div class="content">
+        <p>6) call a function</p>
+        <div class="btn-container">
+            <button type="button" [ngxsFunctionLoading]="fetchingTeachers.bind(this)" >Submit</button>
         </div>
     </div>
 </div>
