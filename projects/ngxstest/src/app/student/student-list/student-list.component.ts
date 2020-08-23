@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { FetchingTeachersAction, FetchingBooksAction } from '../../loading/loading.actions';
+import { Store, Select } from '@ngxs/store';
+import { ToggleApprovelById } from '../../loading/loading.actions';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { LoadingState } from '../../loading/loading.state';
 
 @Component({
   selector: 'app-student-list',
@@ -11,28 +12,16 @@ import { Observable } from 'rxjs';
 })
 export class StudentListComponent implements OnInit {
 
-  fechingBookAction = new FetchingBooksAction();
-  fetchingTeacherAction = new FetchingTeachersAction();
+  @Select(LoadingState.studentList)
+  studentList$: Observable<any>;
   constructor(private store: Store) { }
 
   ngOnInit() { }
-
-  fetchingBooks(): Observable<any> {
-    return this.store.dispatch(this.fechingBookAction).pipe(tap((resp) => {
-      /* here your code on success */
-    }), catchError((error) => {
-      /* here your code on error */
-      return error;
-    }));
+  onToggleApprovel(id) {
+    return this.store.dispatch(new ToggleApprovelById(id));
   }
 
-  fetchingTeachers(): Observable<any> {
-    return this.store.dispatch(this.fetchingTeacherAction).pipe(tap((resp) => {
-      /* here your code on success */
-    }), catchError((error) => {
-      /* here your code on error */
-      throw error;
-    }));
+  trackByFn(index) {
+    return index;
   }
-
 }

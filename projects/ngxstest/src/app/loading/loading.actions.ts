@@ -5,3 +5,8 @@ export class FetchingBooksAction {
 export class FetchingTeachersAction {
   static readonly type = '[loading] fetcing teachers';
 }
+
+export class ToggleApprovelById {
+  static readonly type = '[loading] Toggle Approvel by id';
+  constructor(public id: number) { }
+}
