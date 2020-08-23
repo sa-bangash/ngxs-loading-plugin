@@ -1,25 +1,31 @@
+div{
+   
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px;
+}
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 50%;
     font-size: large;
-    color: #fff;
-    margin-top: 100px;
   }
   
   td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    width: 25%;
     text-align: center;
   }
  
   tr:nth-child(even) {
-    background-color: #7d78a2;
+    background-color: #dedede;
   }
-  tr:nth-child(odd){
-      background-color: #3c3762;
+  td:nth-child(4){
+      /* background-color: #3c3762; */
+      width: 225px;
   }
 
   tr:first-child{

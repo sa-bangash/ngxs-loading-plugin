@@ -1,7 +1,7 @@
 export const Student = [
     {
         id: 1,
-        name: 'M.Ali',
+        name: 'John',
         approved: false
     },
     {
