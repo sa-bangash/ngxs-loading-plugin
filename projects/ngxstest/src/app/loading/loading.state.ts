@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { FetchingTeachersAction, FetchingBooksAction, ToggleApprovelById, AddStudentForm } from './loading.actions';
+import { FetchingTeachersAction, FetchingBooksAction, CheckForEligibility, AddStudentForm } from './loading.actions';
 import { of, Observable } from 'rxjs';
 import { delay, finalize } from 'rxjs/operators';
 import { Student, IStudent } from '../data';
@@ -53,25 +53,20 @@ export class LoadingState {
     );
   }
 
-  @Action(ToggleApprovelById)
-  toggleApprovelById(ctx: StateContext<LoadingStateModel>, { id }: ToggleApprovelById) {
+  @Action(CheckForEligibility)
+  toggleApprovelById(ctx: StateContext<LoadingStateModel>, { id }: CheckForEligibility) {
     return Observable.create((observer) => {
       setTimeout(() => {
         const { studentList } = ctx.getState();
-        const newList = studentList.map((item) => {
-          if (item.id === id) {
-            return {
-              ...item,
-              approved: !item.approved,
-            };
-          }
-          return item;
+        const student = studentList.find((item) => {
+          return item.id === id;
         });
-        ctx.patchState({
-          studentList: newList
-        });
-        observer.next(newList);
-        observer.complete();
+        if (student.marks >= 50) {
+          observer.next(true);
+          observer.complete();
+        } else {
+          observer.error('Student is not Eligibile')
+        }
       }, 3000);
 
     });
@@ -90,7 +85,7 @@ export class LoadingState {
         const newRecord = {
           name,
           id: students.length + 1,
-          approved: false
+          marks: 60,
         }
         ctx.patchState({
           studentList: [...students, newRecord]

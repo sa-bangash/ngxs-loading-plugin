@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Renderer2 } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
-import { ToggleApprovelById } from '../../loading/loading.actions';
+import { CheckForEligibility } from '../../loading/loading.actions';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LoadingState } from '../../loading/loading.state';
@@ -19,8 +19,8 @@ export class StudentListComponent implements OnInit {
   }
 
   ngOnInit() { }
-  onToggleApprovel(id) {
-    return this.store.dispatch(new ToggleApprovelById(id));
+  CheckForEligibility(id) {
+    return this.store.dispatch(new CheckForEligibility(id));
   }
 
   trackByFn(index) {

@@ -1,18 +1,18 @@
 export interface IStudent {
     id: number;
     name: string;
-    approved: boolean;
+    marks: number;
 }
 
 export const Student: IStudent[] = [
     {
         id: 1,
         name: 'John',
-        approved: false
+        marks: 45,
     },
     {
         id: 2,
         name: 'foo',
-        approved: false
+        marks: 90,
     }
 ];

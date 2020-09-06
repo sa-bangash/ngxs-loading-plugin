@@ -9,15 +9,15 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Approved</th>
+            <th>Marks</th>
             <th>Action</th>
         </tr>
         <tr *ngFor="let student of (studentList$ | async); trackBy: trackByFn">
             <td>{{student.id}}</td>
             <td>{{student.name}}</td>
-            <td>{{student.approved}}</td>
+            <td>{{student.marks}}</td>
             <td><button class="button"
-                    [ngxsSubmitLoading]="onToggleApprovel.bind(this,student.id)">{{student.approved?'UnApproved': 'Approve'}}</button>
+                    [ngxsSubmitLoading]="CheckForEligibility.bind(this,student.id)">Check</button>
             </td>
         </tr>
     </table>

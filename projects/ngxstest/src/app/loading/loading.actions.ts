@@ -6,8 +6,8 @@ export class FetchingTeachersAction {
   static readonly type = '[loading] fetcing teachers';
 }
 
-export class ToggleApprovelById {
-  static readonly type = '[loading] Toggle Approvel by id';
+export class CheckForEligibility {
+  static readonly type = '[loading] CheckForEligibility';
   constructor(public id: number) { }
 }
 export class AddStudentForm {
