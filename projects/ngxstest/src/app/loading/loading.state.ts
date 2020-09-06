@@ -89,7 +89,7 @@ export class LoadingState {
         }
         const newRecord = {
           name,
-          id: students.length,
+          id: students.length + 1,
           approved: false
         }
         ctx.patchState({

@@ -9,7 +9,7 @@ import { IConfig } from './interface';
 @Directive({
   selector: '[ngxsSubmitLoading]'
 })
-export class FunctionLoadingDirective extends AbstractLoading {
+export class SubmitLoadingDirective extends AbstractLoading {
   @Input('ngxsSubmitLoading')
   fn: () => Observable<any>;
 

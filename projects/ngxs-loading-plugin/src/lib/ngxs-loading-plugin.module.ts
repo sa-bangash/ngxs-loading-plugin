@@ -3,7 +3,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { NgxsDispatchDirective } from './directives/action-dispatch.directive';
 import { NgxsActionWatchDirective } from './directives/action-watch.directive';
 import { NgxsStateWatchLoadingDirective } from './directives/state-watch.directive';
-import { FunctionLoadingDirective } from './directives/function-loading.directive';
+import { SubmitLoadingDirective } from './directives/submit-loading.directive';
 
 import { IConfig } from './directives/interface';
 import { DEFAULT_CONFIG } from './directives/constant';
@@ -13,13 +13,13 @@ import { DEFAULT_CONFIG } from './directives/constant';
     NgxsDispatchDirective,
     NgxsActionWatchDirective,
     NgxsStateWatchLoadingDirective,
-    FunctionLoadingDirective
+    SubmitLoadingDirective
   ],
   exports: [
     NgxsDispatchDirective,
     NgxsActionWatchDirective,
     NgxsStateWatchLoadingDirective,
-    FunctionLoadingDirective,
+    SubmitLoadingDirective,
   ],
 })
 export class NgxsLoadingPluginModule {
