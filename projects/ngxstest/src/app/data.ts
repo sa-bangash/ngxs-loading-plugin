@@ -1,4 +1,10 @@
-export const Student = [
+export interface IStudent {
+    id: number;
+    name: string;
+    approved: boolean;
+}
+
+export const Student: IStudent[] = [
     {
         id: 1,
         name: 'John',
@@ -9,4 +15,4 @@ export const Student = [
         name: 'foo',
         approved: false
     }
-]
+];

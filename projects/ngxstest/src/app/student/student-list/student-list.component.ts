@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Renderer2 } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { ToggleApprovelById } from '../../loading/loading.actions';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LoadingState } from '../../loading/loading.state';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-student-list',
@@ -14,7 +15,8 @@ export class StudentListComponent implements OnInit {
 
   @Select(LoadingState.studentList)
   studentList$: Observable<any>;
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   ngOnInit() { }
   onToggleApprovel(id) {

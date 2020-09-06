@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
 import { IConfig } from './interface';
 
 @Directive({
-  selector: '[ngxsFunctionLoading]'
+  selector: '[ngxsSubmitLoading]'
 })
 export class FunctionLoadingDirective extends AbstractLoading {
-  @Input('ngxsFunctionLoading')
+  @Input('ngxsSubmitLoading')
   fn: () => Observable<any>;
 
   @HostListener('click')

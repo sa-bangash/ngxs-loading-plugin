@@ -37,7 +37,7 @@
   <div class="content">
       <p> 6) call a function</p>
       <div class="btn-container">
-          <button class="button" type="button" [ngxsFunctionLoading]="fetchingBooks.bind(this)" ngxsSuccessUrl="student">Submit</button>
+          <button class="button" type="button" [ngxsSubmitLoading]="fetchingBooks.bind(this)" ngxsSuccessUrl="student">Submit</button>
       </div>
   </div>
 </div>
@@ -79,7 +79,7 @@
   <div class="content">
       <p>6) call a function</p>
       <div class="btn-container">
-          <button class="button" type="button" [ngxsFunctionLoading]="fetchingTeachers.bind(this)" >Submit</button>
+          <button class="button" type="button" [ngxsSubmitLoading]="fetchingTeachers.bind(this)" >Submit</button>
       </div>
   </div>
 </div>

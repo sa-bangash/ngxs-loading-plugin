@@ -1,0 +1,12 @@
+.form-container{
+    justify-content: center;
+    display: flex;
+}
+.form-wrapper{
+    display: flex;
+    height: 50vh;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

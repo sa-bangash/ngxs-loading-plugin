@@ -10,3 +10,7 @@ export class ToggleApprovelById {
   static readonly type = '[loading] Toggle Approvel by id';
   constructor(public id: number) { }
 }
+export class AddStudentForm {
+  static readonly type = '[loading] Add Student Form';
+  constructor(public name: string) { }
+}

@@ -1,0 +1,7 @@
+<div class="form-container">
+    <form [formGroup]="form" class="form-wrapper">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" formControlName="name" autocomplete="off"><br>
+        <input type="submit" value="Submit" class="button" [ngxsSubmitLoading]="onSubmit.bind(this)">
+    </form>
+</div>

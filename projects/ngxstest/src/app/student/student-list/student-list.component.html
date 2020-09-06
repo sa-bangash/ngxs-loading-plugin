@@ -1,5 +1,10 @@
 <div class="table-container">
-    <h1>Student List</h1>
+    <div class="header">
+        <h1>Student List</h1>
+        <div>
+            <a class="btn" [routerLink]="['/student/add']" routerLinkActive="router-link-active" type="button">Add Student</a>
+        </div>
+    </div>
     <table>
         <tr>
             <th>Id</th>
@@ -12,7 +17,7 @@
             <td>{{student.name}}</td>
             <td>{{student.approved}}</td>
             <td><button class="button"
-                    [ngxsFunctionLoading]="onToggleApprovel.bind(this,student.id)">{{student.approved?'UnApproved': 'Approve'}}</button>
+                    [ngxsSubmitLoading]="onToggleApprovel.bind(this,student.id)">{{student.approved?'UnApproved': 'Approve'}}</button>
             </td>
         </tr>
     </table>

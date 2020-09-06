@@ -1,12 +1,12 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { FetchingTeachersAction, FetchingBooksAction, ToggleApprovelById } from './loading.actions';
+import { FetchingTeachersAction, FetchingBooksAction, ToggleApprovelById, AddStudentForm } from './loading.actions';
 import { of, Observable } from 'rxjs';
 import { delay, finalize } from 'rxjs/operators';
-import { Student } from '../data';
+import { Student, IStudent } from '../data';
 class LoadingStateModel {
   loadingBooks = false;
   loadingTeacher = false;
-  studentList = Student;
+  studentList: IStudent[] = Student;
 }
 @State<LoadingStateModel>({
   name: 'loading',
@@ -77,4 +77,27 @@ export class LoadingState {
     });
   }
 
+  @Action(AddStudentForm)
+  addStudent(ctx: StateContext<LoadingStateModel>, { name }: AddStudentForm) {
+    const students = ctx.getState().studentList;
+    return Observable.create((observer) => {
+      setTimeout(() => {
+        const isExist = students.find((st) => st.name.toLowerCase() === (name as string).toLowerCase());
+        if (isExist) {
+          observer.error('Student already exsit with this name');
+          return;
+        }
+        const newRecord = {
+          name,
+          id: students.length,
+          approved: false
+        }
+        ctx.patchState({
+          studentList: [...students, newRecord]
+        });
+        observer.next(newRecord);
+        observer.complete();
+      }, 2000);
+    });
+  }
 }
