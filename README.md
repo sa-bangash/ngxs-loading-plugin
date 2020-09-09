@@ -72,11 +72,11 @@ export class AppModule {}
 loading.actions.ts
 ```TS
 export class FetchingBooksAction {
-  static readonly type = '[loading] fetching Books';
+  static readonly type = 'FetchingBooksAction.type';
 }
 
 export class FetchingTeachersAction {
-  static readonly type = '[loading] fetcing teachers';
+  static readonly type = 'FetchingTeachersAction.type';
 }
 ```
 
@@ -124,9 +124,9 @@ Passing the instance or class reference of action to `[ngxsActionWatchLoading]` 
 ```html
 <button type="button" [ngxsActionWatchLoading]="fechingBookAction" (click)="fetchingBooks()">Submit</button>
 ```
-or passing action type as a string `ngxsActionWatchLoading="[loading] fetching Books"`.
+or passing action type as a string `ngxsActionWatchLoading="FetchingBooksAction.type"`.
 ```html
-<button type="button" ngxsActionWatchLoading="[loading] fetching Books" (click)="fetchingBooks()">Submit</button>
+<button type="button" ngxsActionWatchLoading="FetchingBooksAction.type" (click)="fetchingBooks()">Submit</button>
 ```
 
 ### Watch and dispatch the action.
@@ -141,7 +141,7 @@ or passing action as the string `ngxsStateWatchLoading="loading.loadingTeacher"`
 ```html
 <button type="button" ngxsStateWatchLoading="loading.loadingTeacher" (click)="fetchingTeachers()">Submit</button>
 ```
-### Call a function.
+### Call client function.
 In `call function` we passing a function to the directive. the function should return observable. you can see the following example.
 
 loading.component.ts
