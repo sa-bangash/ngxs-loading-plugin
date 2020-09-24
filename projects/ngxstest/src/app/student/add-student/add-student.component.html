@@ -2,6 +2,7 @@
     <form [formGroup]="form" class="form-wrapper">
         <label for="name">Name:</label><br>
         <input type="text" id="name" formControlName="name" autocomplete="off"><br>
-        <input type="submit" value="Submit" class="button" [ngxsSubmitLoading]="onSubmit.bind(this)">
+        <input type="submit" value="Submit" class="button" [ngxsInValid]="(form.invalid && !form.pristine)"
+            [ngxsSubmitLoading]="throwError.bind(this)">
     </form>
 </div>

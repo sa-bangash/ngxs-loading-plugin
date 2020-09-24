@@ -13,6 +13,14 @@ export abstract class AbstractLoading implements OnDestroy {
   @Input('ngxsSuccessUrl')
   successUrl: string;
 
+  @Input('ngxsInValid')
+  set inValid(inValid: boolean) {
+    if (inValid) {
+      this.addError();
+    } else {
+      this.onRemoveError();
+    }
+  }
   // tslint:disable-next-line: no-output-on-prefix
   @Output('ngxsOnSuccess')
   // tslint:disable-next-line: no-output-rename
@@ -84,6 +92,9 @@ export abstract class AbstractLoading implements OnDestroy {
     this.nativeElement.classList.remove(this.cssClassName.error);
   }
 
+  addError() {
+    this.nativeElement.classList.add(this.cssClassName.error);
+  }
   watchAction() {
     this.action$
       .pipe(
