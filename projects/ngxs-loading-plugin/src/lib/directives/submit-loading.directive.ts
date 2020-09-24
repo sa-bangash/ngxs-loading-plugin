@@ -22,6 +22,7 @@ export class SubmitLoadingDirective extends AbstractLoading {
         .pipe(
           finalize(() => {
             this.onEnable();
+            this.onRemoveActive();
           })
         )
         .subscribe(() => {

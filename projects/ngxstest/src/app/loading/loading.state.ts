@@ -55,7 +55,7 @@ export class LoadingState {
 
   @Action(CheckForEligibility)
   toggleApprovelById(ctx: StateContext<LoadingStateModel>, { id }: CheckForEligibility) {
-    return Observable.create((observer) => {
+    return new Observable((observer) => {
       setTimeout(() => {
         const { studentList } = ctx.getState();
         const student = studentList.find((item) => {
@@ -75,7 +75,7 @@ export class LoadingState {
   @Action(AddStudentForm)
   addStudent(ctx: StateContext<LoadingStateModel>, { name }: AddStudentForm) {
     const students = ctx.getState().studentList;
-    return Observable.create((observer) => {
+    return new Observable((observer) => {
       setTimeout(() => {
         const isExist = students.find((st) => st.name.toLowerCase() === (name as string).toLowerCase());
         if (isExist) {

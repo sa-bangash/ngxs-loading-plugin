@@ -16,6 +16,13 @@ export class LoadingComponent implements OnInit {
 
   ngOnInit() { }
 
+  emptyObservableEmiting() {
+    return new Observable((observer) => {
+      setTimeout(() => {
+        observer.complete();
+      }, 2000);
+    });
+  }
   fetchingBooks(): Observable<any> {
     return this.store.dispatch(this.fechingBookAction).pipe(tap((resp) => {
       /* here your code on success */
