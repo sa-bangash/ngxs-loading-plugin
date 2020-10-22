@@ -5,6 +5,7 @@ import { finalize } from 'rxjs/operators';
 import { Actions } from '@ngxs/store';
 import { Router } from '@angular/router';
 import { IConfig } from './interface';
+import { ToasterConfig, TOASTER_CONFIG } from '../ngxs-loading-plugin.module';
 
 @Directive({
   selector: '[ngxsSubmitLoading]'
@@ -27,6 +28,7 @@ export class SubmitLoadingDirective extends AbstractLoading {
         )
         .subscribe(() => {
           this.onSuccess();
+          this.showToasterOnSuccess();
           this.navigateByUrl();
         }, (error) => {
           this.onError();
@@ -41,8 +43,8 @@ export class SubmitLoadingDirective extends AbstractLoading {
     protected elem: ElementRef,
     protected action$: Actions,
     protected router: Router,
-    @Inject('config') protected configService: IConfig) {
-    super(elem, action$, router, configService);
+    @Inject('config') protected configService: IConfig, @Inject(TOASTER_CONFIG) toast: ToasterConfig) {
+    super(elem, action$, router, configService, toast);
   }
 
 }

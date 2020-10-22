@@ -8,7 +8,12 @@ import { LoadingComponent } from './loading/loading/loading.component';
 import { NgxsLoadingPluginModule } from 'ngxs-loading-plugin';
 import { RouterModule } from '@angular/router';
 import { router } from './app.module.route';
+import { TOASTER_CONFIG } from 'projects/ngxs-loading-plugin/src/lib/ngxs-loading-plugin.module';
+class Toaster {
+  onSuccess() {
 
+  }
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +25,12 @@ import { router } from './app.module.route';
     NgxsModule.forRoot([LoadingState]),
     NgxsLoadingPluginModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: TOASTER_CONFIG,
+      useClass: function ()
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

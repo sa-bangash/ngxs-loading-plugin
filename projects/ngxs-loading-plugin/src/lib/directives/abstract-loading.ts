@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { IConfig, ICssClassName } from './interface';
 import { DEFAULT_CONFIG } from './constant';
+import { ToasterConfig } from '../ngxs-loading-plugin.module';
 
 export abstract class AbstractLoading implements OnDestroy {
   action: string | { type: string };
@@ -12,6 +13,10 @@ export abstract class AbstractLoading implements OnDestroy {
   // tslint:disable-next-line: no-input-rename
   @Input('ngxsSuccessUrl')
   successUrl: string;
+
+  // tslint:disable-next-line: no-input-rename
+  @Input('ngxsToastMsg')
+  msg: string;
 
   @Input('ngxsInValid')
   set inValid(inValid: boolean) {
@@ -40,7 +45,8 @@ export abstract class AbstractLoading implements OnDestroy {
     protected elem: ElementRef,
     protected action$: Actions,
     protected router: Router,
-    protected config: IConfig
+    protected config: IConfig,
+    protected toaster?: ToasterConfig,
   ) { }
 
   get nativeElement(): HTMLInputElement {
@@ -139,6 +145,12 @@ export abstract class AbstractLoading implements OnDestroy {
   navigateByUrl() {
     if (typeof this.successUrl === 'string') {
       this.router.navigateByUrl(this.successUrl);
+    }
+  }
+
+  showToasterOnSuccess() {
+    if (this.toaster) {
+      this.toaster.onSuccess(this.msg);
     }
   }
   ngOnDestroy(): void {
